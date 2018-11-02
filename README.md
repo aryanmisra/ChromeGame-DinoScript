@@ -5,8 +5,11 @@
 
 <p>Captures pixels from key regions on your screen and examines them to see if an object is moving toward the dino.<p>
 
+<p>The dino game can be played without going offline at chrome://dino</p>
+
 <h3>version 1</h3>
 <p>Basic scaling added.</p>
 <p>5 pixels determine dino's jump./<p>
+<p>When running program, change width and height vars to your screen's respective width and height</p>
 <p>Average Score: 1000</p>
 <p>Highest Score: 1800</p>
