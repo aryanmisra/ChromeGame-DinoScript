@@ -15,134 +15,67 @@ public class dinogame {
         timev = timev + 1;
         float timeco = (timev/10)+1;
 
-        int scaledm5x;
-        int scaledm5y;
-
-        int scaled6x;
-        int scaled6y;
-
-        int scaled7x;
-        int scaled7y;
-
-        int scaled8x;
-        int scaled8y;
-
-        int lowcacx;
-        int lowcacy;
-
-        int timex;
-        int timey;
-
 
         Rectangle area = new Rectangle(mx, my, width, height);
 
 
-        while(1==1)
+        while(true)
         {
-            scaledm5x = (int) (width*0.245*timeco);
-            scaledm5y = (int) (height*0.502962963);
-
-            scaled6x = (int) (width * 0.245*timeco);
-            scaled6y = (int) (height*0.578703);
-
-            scaled7x = (int) (width * 0.146*timeco);
-            scaled7y = (int) (height * 0.578703);
-
-            scaled8x = (int) (width*0.136*timeco);
-            scaled8y = (int) (height*0.502962963);
-
-            lowcacx = (int) (width*0.23145*timeco);
-            lowcacy = (int) (height*0.587963);
-
-            timex = (int) (width*0.39*timeco);
-            timey = (int) (height*0.8333);
+            int pixelvalues[] = new int[]{(int) (width*0.245*timeco),(int) (height*0.502962963),(int) (width * 0.245*timeco),(int) (height*0.578703),(int) (width * 0.146*timeco),
+                    (int) (height * 0.578703),(int) (width*0.166*timeco),(int) (height*0.502962963),(int) (width*0.24145*timeco),(int) (height*0.587963),(int) (width*0.39*timeco),
+                    (int) (height*0.8333),(int) (width*0.15*timeco),(int) (height*0.58333333),(int) (width*0.19),(int) (height*0.58333333)};
 
             timev += 1;
             timeco = (timev / 8000 ) + 1;
             BufferedImage bufferedImage = r.createScreenCapture(area);
+            int pixelcolors[] = new int[] {bufferedImage.getRGB(pixelvalues[0],pixelvalues[1]),bufferedImage.getRGB(pixelvalues[2],pixelvalues[3]),bufferedImage.getRGB(pixelvalues[4],pixelvalues[5]),
+                    bufferedImage.getRGB(pixelvalues[6],pixelvalues[7]),bufferedImage.getRGB(pixelvalues[8],pixelvalues[9]),bufferedImage.getRGB(pixelvalues[10],pixelvalues[11]),
+                    bufferedImage.getRGB(pixelvalues[12],pixelvalues[13]),bufferedImage.getRGB(pixelvalues[14],pixelvalues[15])};
+            Color birdc = new Color(pixelcolors[0]);
+            Color smolc = new Color(pixelcolors[1]);
+            Color closec = new Color(pixelcolors[2]);
+            Color closebirdc = new Color(pixelcolors[3]);
+            Color cacc = new Color(pixelcolors[4]);
+            Color timec = new Color(pixelcolors[5]);
+            Color closelow = new Color(pixelcolors[6]);
+            Color closelownoscale = new Color(pixelcolors[7]);
+            int brightness[] = new int[] {birdc.getRed(),smolc.getRed(),closec.getRed(),closebirdc.getRed(),cacc.getRed(),closelow.getRed(),closelownoscale.getRed(),timec.getRed()};
 
-            int bird = bufferedImage.getRGB(scaledm5x,scaledm5y);
-            Color birdc = new Color(bird);
-            int birdbrightness = birdc.getRed();
-
-            int smol = bufferedImage.getRGB(scaled6x,scaled6y);
-            Color smolc = new Color(smol);
-            int smolbrightness = smolc.getRed();
-
-            int close = bufferedImage.getRGB(scaled7x,scaled7y);
-            Color closec = new Color(close);
-            int closebrightness = closec.getRed();
-
-            int closebird = bufferedImage.getRGB(scaled8x,scaled8y);
-            Color closebirdc = new Color(closebird);
-            int closebirdbrightness = closebirdc.getRed();
-
-            int cac = bufferedImage.getRGB(lowcacx,lowcacy);
-            Color cacc = new Color(cac);
-            int cacbrightness = cacc.getRed();
-
-            int time = bufferedImage.getRGB(timex,timey);
-            Color timec = new Color(time);
-            int timebrightness = timec.getRed();
-
-            if(timebrightness<160) {
-
-                if (birdbrightness > 160) {
-                    r.keyPress(KeyEvent.VK_DOWN);
-                    r.delay(350);
-                    r.keyRelease(KeyEvent.VK_DOWN);
-                }
-                if (smolbrightness > 160) {
-                    r.keyPress(KeyEvent.VK_UP);
-                    r.delay(90);
-                    r.keyRelease(KeyEvent.VK_UP);
-                }
-                if (cacbrightness > 160) {
-                    r.keyPress(KeyEvent.VK_UP);
-                    r.delay(90);
-                    r.keyRelease(KeyEvent.VK_UP);
-                }
-                else if (closebrightness > 160) {
-                    r.keyPress(KeyEvent.VK_UP);
-                    r.delay(90);
-                    r.keyRelease(KeyEvent.VK_UP);
-                }
-                else if (closebirdbrightness > 160) {
-                    r.keyPress(KeyEvent.VK_DOWN);
-                    r.delay(350);
-                    r.keyRelease(KeyEvent.VK_DOWN);
-                }
-
+            if (brightness[0] != brightness[7]) {
+                r.keyPress(KeyEvent.VK_DOWN);
+                r.delay(350);
+                r.keyRelease(KeyEvent.VK_DOWN);
             }
-            if(timebrightness>160) {
-
-                if (birdbrightness < 160) {
-                    r.keyPress(KeyEvent.VK_DOWN);
-                    r.delay(350);
-                    r.keyRelease(KeyEvent.VK_DOWN);
-                }
-                if (smolbrightness < 160) {
-                    r.keyPress(KeyEvent.VK_UP);
-                    r.delay(90);
-                    r.keyRelease(KeyEvent.VK_UP);
-                }
-                if (cacbrightness < 160) {
-                    r.keyPress(KeyEvent.VK_UP);
-                    r.delay(90);
-                    r.keyRelease(KeyEvent.VK_UP);
-                }
-                else if (closebrightness < 160) {
-                    r.keyPress(KeyEvent.VK_UP);
-                    r.delay(90);
-                    r.keyRelease(KeyEvent.VK_UP);
-                }
-                else if (closebirdbrightness < 160) {
-                    r.keyPress(KeyEvent.VK_DOWN);
-                    r.delay(350);
-                    r.keyRelease(KeyEvent.VK_DOWN);
-                }
+            if (brightness[1] != brightness[7]) {
+                r.keyPress(KeyEvent.VK_UP);
+                r.delay(80);
+                r.keyRelease(KeyEvent.VK_UP);
             }
-
+            if (brightness[2] != brightness[7]) {
+                r.keyPress(KeyEvent.VK_UP);
+                r.delay(100);
+                r.keyRelease(KeyEvent.VK_UP);
+            }
+            if (brightness[3] != brightness[7]) {
+                r.keyPress(KeyEvent.VK_DOWN);
+                r.delay(350);
+                r.keyRelease(KeyEvent.VK_DOWN);
+            }
+            if (brightness[4] != brightness[7]) {
+                r.keyPress(KeyEvent.VK_UP);
+                r.delay(100);
+                r.keyRelease(KeyEvent.VK_UP);
+            }
+            if (brightness[5] != brightness[7]) {
+                r.keyPress(KeyEvent.VK_UP);
+                r.delay(80);
+                r.keyRelease(KeyEvent.VK_UP);
+            }
+            if (brightness[6] != brightness[7]) {
+                r.keyPress(KeyEvent.VK_UP);
+                r.delay(100);
+                r.keyRelease(KeyEvent.VK_UP);
+            }
         }
     }
 }
