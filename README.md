@@ -8,8 +8,8 @@
 <p>The dino game can be played without going offline at chrome://dino</p>
 
 <h3>version 2</h3>
-<p>Made program more effiecent</p>
-<p>Added 2 more parameters/<p>
+<p>Made program more efficient</p>
+<p>Added 2 more parameters</p>
 <p>Before running program, change width and height vars to your screen's respective width and height</p>
 <p>Average Score: 1400</p>
 <p>Highest Score: 1800</p>
